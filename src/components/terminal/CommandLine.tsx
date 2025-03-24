@@ -3,15 +3,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Available terminal commands with their descriptions
+ */
 const COMMANDS = {
-  help: "Muestra comandos disponibles",
-  about: "Navega a la sección 'Sobre mí'",
-  experience: "Navega a la sección 'Experiencia'",
-  skills: "Navega a la sección 'Habilidades'",
-  contact: "Navega a la sección 'Contacto'",
-  home: "Vuelve a la página principal",
-  clear: "Limpia la consola",
-  theme: "Cambia el tema (uso: theme [green|blue|amber|white|matrix])"
+  help: "Display available commands",
+  about: "Navigate to 'About Me' section",
+  experience: "Navigate to 'Experience' section",
+  skills: "Navigate to 'Skills' section",
+  contact: "Navigate to 'Contact' section",
+  home: "Return to the home page",
+  clear: "Clear the console",
+  theme: "Change the theme (usage: theme [green|blue|amber|white|matrix])"
 };
 
 /**
@@ -32,6 +35,9 @@ const CommandLine: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Handle form submission when user enters a command
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -48,6 +54,9 @@ const CommandLine: React.FC = () => {
     setHistoryIndex(-1);
   };
 
+  /**
+   * Process the entered command and execute corresponding action
+   */
   const processCommand = (cmd: string) => {
     const args = cmd.split(' ');
     const command = args[0];
@@ -83,19 +92,22 @@ const CommandLine: React.FC = () => {
       case 'theme':
         if (args[1] && window.changeTheme) {
           window.changeTheme(args[1]);
-          setHistory([...history, `$ ${input}`, `Tema cambiado a ${args[1]}`]);
+          setHistory([...history, `$ ${input}`, `Theme changed to ${args[1]}`]);
         } else {
-          setHistory([...history, `$ ${input}`, "Uso: theme [green|blue|amber|white|matrix]"]);
+          setHistory([...history, `$ ${input}`, "Usage: theme [green|blue|amber|white|matrix]"]);
         }
         break;
       default:
-        setHistory([...history, `$ ${input}`, `Comando no reconocido: ${command}. Escribe 'help' para ver comandos disponibles.`]);
+        setHistory([...history, `$ ${input}`, `Command not recognized: ${command}. Type 'help' to see available commands.`]);
     }
   };
 
+  /**
+   * Handle navigation to different sections of the portfolio
+   */
   const handleNavigation = (path?: string) => {
     if (!path) {
-      setHistory([...history, `$ ${input}`, "Especifica una ruta. Ejemplo: cd about"]);
+      setHistory([...history, `$ ${input}`, "Please specify a path. Example: cd about"]);
       return;
     }
     
@@ -114,26 +126,32 @@ const CommandLine: React.FC = () => {
     if (pathMap[path]) {
       router.push(pathMap[path]);
     } else {
-      setHistory([...history, `$ ${input}`, `Ruta no encontrada: ${path}`]);
+      setHistory([...history, `$ ${input}`, `Path not found: ${path}`]);
     }
   };
 
+  /**
+   * Display help information about available commands
+   */
   const showHelp = () => {
-    const helpText = ["Comandos disponibles:"];
+    const helpText = ["Available commands:"];
     
     Object.entries(COMMANDS).forEach(([cmd, desc]) => {
       helpText.push(`  ${cmd.padEnd(12)} - ${desc}`);
     });
     
     helpText.push("");
-    helpText.push("Navegación:");
-    helpText.push("  cd [ruta]      - Navega a una sección (ejemplo: cd about-me)");
-    helpText.push("  goto [ruta]    - Alias para cd");
-    helpText.push("  open [ruta]    - Alias para cd");
+    helpText.push("Navigation:");
+    helpText.push("  cd [path]      - Navigate to a section (example: cd about-me)");
+    helpText.push("  goto [path]    - Alias for cd");
+    helpText.push("  open [path]    - Alias for cd");
     
     setHistory([...history, `$ ${input}`, ...helpText]);
   };
 
+  /**
+   * Handle keyboard navigation for command history
+   */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Handle up/down arrows for command history
     if (e.key === 'ArrowUp') {
@@ -162,7 +180,7 @@ const CommandLine: React.FC = () => {
   return (
     <div className="border border-terminal-dimmed rounded-md p-4 bg-terminal-bg mt-6">
       <div className="mb-2 text-sm text-terminal-dimmed">
-        Escribe un comando o 'help' para ver opciones disponibles
+        Type a command or 'help' to see available options
       </div>
       
       {/* Command history */}

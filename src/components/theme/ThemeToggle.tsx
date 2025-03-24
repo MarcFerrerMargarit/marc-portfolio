@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 
-// Define theme colors
+/**
+ * Theme definitions with color schemes for different terminal styles
+ */
 const themes = {
   green: {
     bg: '#0c0c0c',
@@ -10,7 +12,7 @@ const themes = {
     accent: '#33ff33',
     dimmed: '#175e17',
     cursor: '#33ff33',
-    name: 'Verde Clásico'
+    name: 'Classic Green'
   },
   blue: {
     bg: '#012456',
@@ -18,7 +20,7 @@ const themes = {
     accent: '#569cd6',
     dimmed: '#3c73a6',
     cursor: '#569cd6',
-    name: 'Azul PowerShell'
+    name: 'PowerShell Blue'
   },
   amber: {
     bg: '#2b2b2b',
@@ -26,7 +28,7 @@ const themes = {
     accent: '#ffbf00',
     dimmed: '#a67b00',
     cursor: '#ffbf00',
-    name: 'Ámbar Retro'
+    name: 'Retro Amber'
   },
   white: {
     bg: '#121212',
@@ -34,7 +36,7 @@ const themes = {
     accent: '#f0f0f0',
     dimmed: '#777777',
     cursor: '#f0f0f0',
-    name: 'Minimalista'
+    name: 'Minimalist'
   },
   matrix: {
     bg: '#000000',
@@ -70,7 +72,9 @@ const ThemeToggle: React.FC = () => {
     };
   }, [currentTheme]);
   
-  // Apply theme colors to CSS variables
+  /**
+   * Apply theme colors to CSS variables
+   */
   const applyTheme = (theme: ThemeKey) => {
     const root = document.documentElement;
     const selectedTheme = themes[theme];
@@ -82,13 +86,16 @@ const ThemeToggle: React.FC = () => {
     root.style.setProperty('--terminal-cursor', selectedTheme.cursor);
   };
   
+  /**
+   * Handle theme change when a theme button is clicked
+   */
   const handleThemeChange = (theme: ThemeKey) => {
     setCurrentTheme(theme);
   };
   
   return (
     <div className="flex items-center space-x-2">
-      <span className="text-terminal-dimmed text-sm">Tema:</span>
+      <span className="text-terminal-dimmed text-sm">Theme:</span>
       <div className="flex space-x-1">
         {(Object.keys(themes) as ThemeKey[]).map((theme) => (
           <button
@@ -103,7 +110,7 @@ const ThemeToggle: React.FC = () => {
               borderWidth: '1px'
             }}
             title={themes[theme].name}
-            aria-label={`Cambiar a tema ${themes[theme].name}`}
+            aria-label={`Change to ${themes[theme].name} theme`}
           />
         ))}
       </div>

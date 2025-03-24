@@ -21,13 +21,15 @@ export default function Home() {
         
         <p className="text-xl mb-6">
           <span className="typing-effect max-w-fit">
-            Software Developer
+            Software Architect
           </span>
         </p>
         
         <p className="mb-6">
-          Welcome to my portfolio. Navigate through the sections to learn more about me,
-          my skills, and my work.
+          Welcome to my portfolio. I'm a software engineer specializing in Android development, 
+          particularly Android Automotive. I have extensive experience in software architecture, 
+          Jetpack Compose, and Kotlin, along with expertise in various programming languages.
+          Navigate through the sections to learn more about me, my skills, and my work.
         </p>
         
         <div className="flex space-x-4">
@@ -52,13 +54,13 @@ export default function Home() {
         </h2>
         <div className="space-y-2">
           <p>
-            <span className="text-terminal-dimmed"></span> Passionate software developer with experience in building robust applications
+            <span className="text-terminal-dimmed"></span> Software Architect Engineer at Volkswagen Group Services Barcelona
           </p>
           <p>
-            <span className="text-terminal-dimmed"></span> Specialized in [your main technologies/frameworks]
+            <span className="text-terminal-dimmed"></span> Specialized in Android Automotive, Java, Kotlin, and Software Architecture
           </p>
           <p>
-            <span className="text-terminal-dimmed"></span> Currently working on exciting projects that [brief description]
+            <span className="text-terminal-dimmed"></span> Experience with Python, C++, and Machine Learning technologies
           </p>
         </div>
       </section>
@@ -69,20 +71,20 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           <div className="p-3 border border-terminal-dimmed rounded-md">
-            <p className="text-terminal-accent text-2xl font-bold">X+</p>
+            <p className="text-terminal-accent text-2xl font-bold">8+</p>
             <p className="text-sm">Years Experience</p>
           </div>
           <div className="p-3 border border-terminal-dimmed rounded-md">
-            <p className="text-terminal-accent text-2xl font-bold">Y+</p>
-            <p className="text-sm">Projects</p>
+            <p className="text-terminal-accent text-2xl font-bold">3+</p>
+            <p className="text-sm">Companies</p>
           </div>
           <div className="p-3 border border-terminal-dimmed rounded-md">
-            <p className="text-terminal-accent text-2xl font-bold">Z+</p>
-            <p className="text-sm">Clients</p>
+            <p className="text-terminal-accent text-2xl font-bold">10+</p>
+            <p className="text-sm">Technologies</p>
           </div>
           <div className="p-3 border border-terminal-dimmed rounded-md">
-            <p className="text-terminal-accent text-2xl font-bold">W+</p>
-            <p className="text-sm">Tech Stack</p>
+            <p className="text-terminal-accent text-2xl font-bold">2</p>
+            <p className="text-sm">Degrees</p>
           </div>
         </div>
       </section>
