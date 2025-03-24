@@ -5,6 +5,10 @@ on:
     tags:
       - 'v*' # This will trigger on any tag that starts with 'v'
 
+# Add this permissions block
+permissions:
+  contents: write  # This is crucial for creating releases
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
